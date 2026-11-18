@@ -170,7 +170,7 @@ local function createBugFrame()
     help:SetPoint("RIGHT", -22, 0)
     help:SetJustifyH("LEFT")
     help:SetText("1. The text below is selected: press Ctrl+C (Cmd+C on Mac) to copy it.\n"
-        .. "2. Open the address at the bottom in your browser and paste it into the form.")
+        .. "2. Open the address at the bottom in your browser and paste it into a new issue.")
 
     local scroll = CreateFrame("ScrollFrame", nil, f, "UIPanelScrollFrameTemplate")
     scroll:SetPoint("TOPLEFT", 22, -78)

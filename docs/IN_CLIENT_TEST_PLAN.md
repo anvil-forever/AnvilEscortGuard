@@ -31,7 +31,7 @@ Fill in the result column (PASS, FAIL or a note) and save the copy as `docs/test
 | A.3 | `/aeg` | status line and help | |
 | A.4 | `/aeg config` | the settings page opens; typing "escort" in the search box finds it | |
 | A.5 | `/aeg check 94556`, `/aeg check 783` | "guarded: built-in escort list" / "not an escort…" | |
-| A.6 | `/aeg bug` | the window opens with the text selected; Cmd+C copies it; the link box shows anvilforever.com/bug; Esc closes it | |
+| A.6 | `/aeg bug` | the window opens with the text selected; Cmd+C copies it; the link box shows the GitHub new-issue link; Esc closes it | |
 | A.7 | Paste the copied report into a text file | no character name or realm in it | |
 
 ## B. Quest-giver window, solo (Questie auto-accept on)
