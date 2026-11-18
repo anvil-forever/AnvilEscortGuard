@@ -1,5 +1,1 @@
 blank_issues_enabled: false
-contact_links:
-  - name: Report by web form or email instead
-    url: https://anvilforever.com/bug
-    about: No GitHub account? Use the form; we'll file the issue for you.
