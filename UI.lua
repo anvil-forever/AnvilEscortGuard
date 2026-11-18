@@ -6,7 +6,6 @@
 -- Nothing here runs until the player uses it (the bug window is created on first use).
 
 local ADDON, ns = ...
-local L = ns.L
 
 local function onoff(v) return v and "on" or "off" end
 

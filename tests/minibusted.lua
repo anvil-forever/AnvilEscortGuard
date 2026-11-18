@@ -4,7 +4,6 @@
 -- On CI the same spec files run under real busted.
 
 local R = { passed = 0, failed = 0, failures = {} }
-local stack = {}
 
 local function fmt(v)
     if type(v) == "string" then return string.format("%q", v) end

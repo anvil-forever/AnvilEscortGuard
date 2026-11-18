@@ -18,5 +18,5 @@ read_globals = {
     "IsAddOnLoaded", "IsInGroup", "Settings", "UIParent", "date", "debugstack", "issecretvalue", "time",
 }
 
-files["tests/"] = { std = "+busted", globals = { "unpack" } }
+files["tests/"] = { std = "+busted", globals = { "unpack" }, unused_args = false }
 files["tools/"] = { std = "+lua51" }

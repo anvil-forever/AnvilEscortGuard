@@ -201,7 +201,7 @@ describe("escort guard", function()
         end)
 
         it("keeps only the last 10 blocks", function()
-            for i = 1, 15 do
+            for _ = 1, 15 do
                 m.fire("QUEST_FINISHED")
                 m.accept(ESCORT, "questie")
             end
