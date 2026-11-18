@@ -1,5 +1,5 @@
 std = "lua51"
-max_line_length = 140
+max_line_length = 160
 codes = true
 exclude_files = { ".luarocks", "lua_modules" }
 
