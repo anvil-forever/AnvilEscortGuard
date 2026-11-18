@@ -71,5 +71,5 @@ Anvil Forever add-ons are free and stay free. Donation links will appear here an
 Open a pull request to `EscortIDs.lua` with the quest ID, the quest name and how you confirmed it is an escort in WoW Forever.
 
 ## License
-GPL-3.0-or-later. Copyright (C) 2026 Anvil Forever. See `LICENSE` and `THIRD_PARTY.md`.
+GPL-3.0-or-later. Copyright (C) 2026 Anvil Forever. See `LICENSE` (the GPLv3 text), `NOTICE` and `THIRD_PARTY.md`.
 Not affiliated with or endorsed by Blizzard Entertainment.
