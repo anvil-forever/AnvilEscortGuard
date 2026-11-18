@@ -70,7 +70,7 @@ describe("bug report", function()
         assert.is_not_nil(f)
         assert.is_true(f.shown)
         assert.matches("addon=AnvilEscortGuard", f.edit.text)
-        assert.are.equal("https://anvilforever.com/bug", f.url.text)
+        assert.are.equal("https://github.com/anvil-forever/AnvilEscortGuard/issues/new/choose", f.url.text)
     end)
 
     it("the report box cannot be edited by typing", function()

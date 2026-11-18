@@ -1,5 +1,7 @@
 # Anvil Escort Guard
 
+> **Beta.** Tested with automated tests against a mocked game API; in-game testing is in progress. Please report anything odd with `/aeg bug`.
+
 **Quest add-ons should not start escort quests for you.** Anvil Escort Guard stops other add-ons (Questie, RestedXP/RXP Guides, auto-accept add-ons) from auto-accepting escort quests in WoW Forever. That covers the "<player> is starting <quest>" popup when a group member starts one. You still accept escorts yourself, with one click, when your group is ready.
 
 Free, no ads, nothing locked. By [Anvil Forever](https://anvilforever.com).
@@ -43,7 +45,7 @@ The first click on its Accept button is stopped. Click it once more and it goes 
 It does no work while you play. It runs only when something calls accept or confirm on a quest, then checks one table. It registers no per-frame updates or timers.
 
 ### Report a bug
-Type `/aeg bug`. A window opens with a short report already selected. Copy it (Ctrl+C, or Cmd+C on Mac) and paste it at **https://anvilforever.com/bug**, or open an issue on GitHub. The report holds versions, settings and recent events, **never** your character name or realm. Add-ons cannot send anything over the internet, so nothing leaves your computer unless you paste it.
+Type `/aeg bug`. A window opens with a short report already selected. Copy it (Ctrl+C, or Cmd+C on Mac) and paste it in a [new GitHub issue](https://github.com/anvil-forever/AnvilEscortGuard/issues/new/choose). The report holds versions, settings and recent events, **never** your character name or realm. Add-ons cannot send anything over the internet, so nothing leaves your computer unless you paste it.
 
 ### Support the project
 Anvil Forever add-ons are free and stay free. Donation links will appear here and on CurseForge at release.

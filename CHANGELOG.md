@@ -1,6 +1,15 @@
 # Changelog
 
-## 0.1.0 (unreleased)
+## 0.1.0-beta1 (2026-11-18)
+
+### For players
+- First public beta. Tested with automated tests against a mocked game API; in-game testing is in progress.
+- `/aeg bug` now points to GitHub issues (our website's bug form isn't live yet).
+
+### For contributors
+- LICENSE is the unmodified GPLv3 text; the copyright notice is in NOTICE (#1).
+
+## 0.1.0 (first version, not released on its own)
 
 ### For players
 - First version. Stops other add-ons from auto-accepting escort quests in the quest-giver window.

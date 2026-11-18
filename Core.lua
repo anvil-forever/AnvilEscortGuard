@@ -18,7 +18,7 @@ ns.CONFIRM_WINDOW = 60      -- seconds a "<player> is starting <quest>" popup co
 ns.RETRY_MIN_GAP = 0.4      -- a second try in the same dialog this much later counts as a person
 ns.LOG_SIZE = 10
 ns.ERROR_SIZE = 5
-ns.BUG_URL = "https://anvilforever.com/bug"
+ns.BUG_URL = "https://github.com/anvil-forever/AnvilEscortGuard/issues/new/choose"
 
 local getMeta = (C_AddOns and C_AddOns.GetAddOnMetadata) or GetAddOnMetadata
 ns.VERSION = (getMeta and getMeta(ADDON, "Version")) or "dev"
@@ -29,7 +29,7 @@ local L = {
     BLOCKED_ACCEPT = "stopped %s from auto-accepting the escort quest \"%s\". Accept it yourself when your group is ready.",
     BLOCKED_CONFIRM = "stopped %s from auto-joining \"%s\", an escort that %s started. Click Yes in the popup to join.",
     RETRY_HINT = "Using a quest add-on to click Accept? Click it once more.",
-    FIRST_RUN_1 = "is on. Add-ons can no longer start escort quests for you; you still accept them yourself.",
+    FIRST_RUN_1 = "(beta) is on. Add-ons can no longer start escort quests for you; you still accept them yourself.",
     FIRST_RUN_2 = "Type /aeg for options.",
     SOMEONE = "a group member",
     AN_ADDON = "an add-on",

@@ -276,7 +276,7 @@ describe("escort guard", function()
         it("shows the first-run message once", function()
             local m2 = Mock.new()
             local ns2 = m2.boot()
-            assert.matches("is on%. Add%-ons can no longer start escort quests", m2.output())
+            assert.matches("%(beta%) is on%. Add%-ons can no longer start escort quests", m2.output())
             assert.is_true(ns2.db.firstRunDone)
         end)
 
