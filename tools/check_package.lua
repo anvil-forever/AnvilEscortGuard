@@ -58,8 +58,12 @@ function C.check(root)
     if not (license:find("GNU GENERAL PUBLIC LICENSE", 1, true) and license:find("Version 3, 29 June 2007", 1, true)) then
         problem("LICENSE must contain the GPLv3 text")
     end
-    if not license:find("Copyright (C) 2026 Anvil Forever", 1, true) then
-        problem("LICENSE must carry the Anvil Forever copyright notice")
+    if not license:find("^%s*GNU GENERAL PUBLIC LICENSE") then
+        problem("LICENSE must be the unmodified GPLv3 text (put the copyright notice in NOTICE) so GitHub detects GPL-3.0")
+    end
+    local notice = readFile(root .. "/NOTICE") or ""
+    if not notice:find("Copyright (C) 2026 Anvil Forever", 1, true) then
+        problem("NOTICE must carry the Anvil Forever copyright notice")
     end
 
     for _, f in ipairs({ "README.md", "CHANGELOG.md", "THIRD_PARTY.md", ".pkgmeta" }) do
