@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: leafo/gh-actions-lua@v11
+      - uses: leafo/gh-actions-lua@v13
         with:
           luaVersion: "5.1.5"
       - name: Package check
@@ -26,4 +26,4 @@ jobs:
       - name: Tests
         run: lua tests/run.lua
       - name: Package and upload (BigWigs packager >= 2.7.0)
-        uses: BigWigsMods/packager@v2
+        uses: BigWigsMods/packager@v2.7.0

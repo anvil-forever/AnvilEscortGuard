@@ -1,0 +1,35 @@
+name: Bug report
+description: Something in Anvil Escort Guard doesn't work as it should.
+labels: ["bug", "intake"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! In game, type **/aeg bug**, press Ctrl+C (Cmd+C on Mac) to copy the report, and paste it below.
+        Reports are public: please don't include your character name, realm or BattleTag.
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: /aeg bug report
+      description: Paste the text from the /aeg bug window.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Talk to <quest giver> with Questie auto-accept on
+        2. ...
+  - type: input
+    id: quest
+    attributes:
+      label: Quest name or ID (if a quest is involved)
