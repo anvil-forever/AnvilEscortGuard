@@ -1,0 +1,123 @@
+local Mock = require("tests.mock.wow")
+
+describe("/aeg command", function()
+    local m, ns
+
+    before_each(function()
+        m = Mock.new({ settings = true })
+        ns = m.boot()
+        m.clearOutput()
+    end)
+
+    it("shows status and help with no argument", function()
+        m.slash("")
+        assert.matches("is on %(quest window on, group popups on%)", m.output())
+        assert.matches("/aeg check <questID>", m.output())
+    end)
+
+    it("turns the guard off and on", function()
+        m.slash("off")
+        assert.is_false(ns.db.enabled)
+        m.slash("ON")
+        assert.is_true(ns.db.enabled)
+    end)
+
+    it("toggles single settings", function()
+        m.slash("group off")
+        assert.is_false(ns.db.guardGroup)
+        m.slash("dialog off")
+        assert.is_false(ns.db.guardDialog)
+        m.slash("grouponly on")
+        assert.is_true(ns.db.groupOnly)
+        m.slash("notify off")
+        assert.is_false(ns.db.notify)
+    end)
+
+    it("explains a toggle used without on/off", function()
+        m.slash("group maybe")
+        assert.matches("use /aeg group on", m.output())
+        assert.is_true(ns.db.guardGroup)
+    end)
+
+    it("allow, add and reset a quest", function()
+        m.slash("allow 94556")
+        assert.is_true(ns.db.allow[94556])
+        assert.matches("quest 94556: not guarded: you allowed it", m.output())
+        m.slash("add 94556")
+        assert.is_nil(ns.db.allow[94556])
+        assert.is_true(ns.db.extra[94556])
+        m.slash("reset 94556")
+        assert.is_nil(ns.db.extra[94556])
+        assert.matches("quest 94556: guarded: built%-in escort list", m.output())
+    end)
+
+    it("check explains why a quest is or isn't guarded", function()
+        m.tags[555] = 84
+        m.slash("check 555")
+        assert.matches("quest 555: guarded: the game tags it as an escort", m.output())
+        m.slash("check 783")
+        assert.matches("quest 783: not an escort", m.output())
+    end)
+
+    it("rejects bad quest IDs", function()
+        m.slash("allow abc")
+        m.slash("allow -3")
+        m.slash("allow 1.5")
+        assert.are.same({}, ns.db.allow)
+        assert.matches("give a quest ID number", m.output())
+    end)
+
+    it("lists the player's lists and the built-in count", function()
+        m.slash("allow 10")
+        m.slash("allow 2")
+        m.slash("list")
+        assert.matches("allowed by you: 2, 10", m.output())
+        assert.matches("built%-in list: %d+ escort quests", m.output())
+    end)
+
+    it("registers a searchable settings page with one checkbox per setting", function()
+        assert.are.equal("Anvil Escort Guard", m.settings.name)
+        assert.is_true(m.settings.registered)
+        for _, s in ipairs(ns.SETTINGS) do
+            assert.is_not_nil(m.settings[s.key])
+            assert.are.equal(ns.db, m.settings[s.key].tbl)
+            assert.are.equal("boolean", m.settings[s.key].vtype)
+        end
+        m.slash("config")
+        assert.are.equal(42, m.settings.opened)
+    end)
+
+    it("works without the Settings API", function()
+        local m2 = Mock.new()
+        m2.boot()
+        m2.clearOutput()
+        m2.slash("config")
+        assert.matches("settings window is not available", m2.output())
+    end)
+
+    it("self-test passes in a healthy setup and stores a summary", function()
+        m.stack = Mock.stacks.chatSlash
+        m.slash("selftest")
+        assert.matches("self%-test 5/5 passed", m.output())
+        assert.matches("INFO escort tag for quest 94556", m.output())
+        assert.are.equal("5/5 passed", ns.db.selftest.summary)
+    end)
+
+    it("self-test reports a failing call-stack reading", function()
+        m.stack = "garbage"
+        m.slash("selftest")
+        assert.matches("FAIL call%-stack reading %(unknown%)", m.output())
+    end)
+
+    it("unknown commands get a hint", function()
+        m.slash("dance")
+        assert.matches("unknown command", m.output())
+    end)
+
+    it("an error inside a command is caught and recorded", function()
+        ns.HandleSlash = function() error("kaboom") end
+        m.slash("on")
+        assert.matches("Type /aeg bug to report it", m.output())
+        assert.matches("kaboom", ns.db.errors[#ns.db.errors].msg)
+    end)
+end)

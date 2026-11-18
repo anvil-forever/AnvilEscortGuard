@@ -1,0 +1,12 @@
+## Interface: 16001
+## Title: Anvil Escort Guard
+## Notes: Stops other add-ons from auto-accepting escort quests. You can still accept them yourself.
+## Author: Anvil Forever
+## Version: @project-version@
+## SavedVariables: AnvilEscortGuardDB
+## X-License: GPL-3.0-or-later
+## X-Website: https://anvilforever.com
+
+EscortIDs.lua
+Core.lua
+UI.lua

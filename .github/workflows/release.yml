@@ -1,0 +1,29 @@
+# Tag v1.2.3-beta1 -> beta on CurseForge/Wago/GitHub; tag v1.2.3 -> release.
+# Secrets live only in the protected "release" environment, never in files.
+name: Release
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: release
+    env:
+      CF_API_KEY: ${{ secrets.CF_API_KEY }}
+      WAGO_API_TOKEN: ${{ secrets.WAGO_API_TOKEN }}
+      GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: leafo/gh-actions-lua@v11
+        with:
+          luaVersion: "5.1.5"
+      - name: Package check
+        run: lua tools/check_package.lua
+      - name: Tests
+        run: lua tests/run.lua
+      - name: Package and upload (BigWigs packager >= 2.7.0)
+        uses: BigWigsMods/packager@v2

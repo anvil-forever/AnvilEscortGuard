@@ -1,0 +1,31 @@
+# Runs on GitHub's runners only (nothing runs on the shared Mac mini).
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leafo/gh-actions-lua@v11
+        with:
+          luaVersion: "5.1.5"
+      - uses: leafo/gh-actions-luarocks@v5
+      - name: Install luacheck and busted
+        run: luarocks install luacheck && luarocks install busted
+      - name: Lint
+        run: luacheck .
+      - name: Unit tests (busted)
+        run: busted
+      - name: Unit tests (plain Lua runner)
+        run: lua tests/run.lua
+      - name: Package check
+        run: lua tools/check_package.lua
+      - name: Package dry run (no upload)
+        uses: BigWigsMods/packager@v2
+        with:
+          args: -d -z
