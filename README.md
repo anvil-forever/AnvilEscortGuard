@@ -65,6 +65,7 @@ Anvil Forever add-ons are free and stay free. Donation links will appear here an
 - `busted`, with Lua 5.1 or LuaJIT and busted installed.
 - Without busted: `lua tests/run.lua`, or `pandoc lua tests/run.lua`, from this folder.
 - `luacheck .` lints. `lua tools/check_package.lua` checks the package.
+- On the team's Mac mini, a folder-only toolchain (LuaJIT 2.1 + luacheck 1.2.0) lives in `../.tools/` (outside this repo): `../.tools/bin/luacheck .` and `../.tools/bin/luajit tests/run.lua`.
 
 ### Adding an escort quest
 Open a pull request to `EscortIDs.lua` with the quest ID, the quest name and how you confirmed it is an escort in WoW Forever.
